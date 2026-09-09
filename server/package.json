@@ -8,7 +8,7 @@
     "dev": "node --watch index.js",
     "migrate:up": "node-pg-migrate up",
     "migrate:down": "node-pg-migrate down",
-    "test": "jest"
+    "test": "jest --runInBand"
   },
   "dependencies": {
     "dotenv": "^16.4.5",
