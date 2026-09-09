@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const { pool } = require('./db');
 const { errorHandler } = require('./errorHandler');
+const locationsRouter = require('./routes/locations');
 
 const app = express();
 app.use(express.json());
@@ -14,6 +15,8 @@ app.get('/api/health', async (req, res, next) => {
     next(err);
   }
 });
+
+app.use('/api/locations', locationsRouter);
 
 if (process.env.NODE_ENV === 'production') {
   const buildDir = path.join(__dirname, '..', 'build');
