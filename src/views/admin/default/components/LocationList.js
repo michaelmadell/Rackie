@@ -173,7 +173,10 @@ export default function LocationList({ locations, onUpdate, onDelete }) {
             <Button variant='outline' mr='12px' onClick={onClose}>
               Cancel
             </Button>
-            <Button colorScheme='brand' onClick={saveEdit}>
+            <Button
+              colorScheme='brand'
+              onClick={saveEdit}
+              isDisabled={!editing?.name?.trim()}>
               Save
             </Button>
           </ModalFooter>

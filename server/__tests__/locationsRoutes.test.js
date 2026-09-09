@@ -51,6 +51,18 @@ describe('/api/locations', () => {
     expect(updateRes.body.notes).toBe('Updated notes');
   });
 
+  it('rejects updating a location with an empty name', async () => {
+    const createRes = await request(app)
+      .post('/api/locations')
+      .send({ name: 'HQ', address: '1 Main St', lat: 10, lng: 20 });
+    const { id } = createRes.body;
+
+    const updateRes = await request(app)
+      .put(`/api/locations/${id}`)
+      .send({ name: '' });
+    expect(updateRes.status).toBe(400);
+  });
+
   it('404s updating a nonexistent location', async () => {
     const res = await request(app)
       .put('/api/locations/999999')

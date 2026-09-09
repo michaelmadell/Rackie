@@ -15,11 +15,15 @@ function isValidCoordinate(lat, lng) {
   );
 }
 
+function isNonEmptyString(value) {
+  return typeof value === 'string' && value.trim() !== '';
+}
+
 function validateCreate(body) {
-  if (!body || typeof body.name !== 'string' || body.name.trim() === '') {
+  if (!body || !isNonEmptyString(body.name)) {
     throw new HttpError(400, 'name is required');
   }
-  if (typeof body.address !== 'string' || body.address.trim() === '') {
+  if (!isNonEmptyString(body.address)) {
     throw new HttpError(400, 'address is required');
   }
   if (!isValidCoordinate(body.lat, body.lng)) {
@@ -58,6 +62,13 @@ router.put('/:id', async (req, res, next) => {
     ['name', 'notes', 'address', 'lat', 'lng'].forEach((key) => {
       if (key in req.body) fields[key] = req.body[key];
     });
+
+    if ('name' in fields && !isNonEmptyString(fields.name)) {
+      throw new HttpError(400, 'name must be a non-empty string');
+    }
+    if ('address' in fields && !isNonEmptyString(fields.address)) {
+      throw new HttpError(400, 'address must be a non-empty string');
+    }
 
     if ('lat' in fields || 'lng' in fields) {
       const lat = 'lat' in fields ? fields.lat : existing.lat;
