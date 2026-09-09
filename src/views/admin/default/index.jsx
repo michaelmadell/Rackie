@@ -31,6 +31,7 @@ import {
   Select,
   SimpleGrid,
   useColorModeValue,
+  useToast,
 } from "@chakra-ui/react";
 // Assets
 import Usa from "assets/img/dashboards/usa.png";
@@ -76,11 +77,21 @@ export default function UserReports() {
   const boxBg = useColorModeValue("secondaryGray.300", "whiteAlpha.100");
   const devices = 42;
   const [locations, setLocations] = useState([]);
+  const toast = useToast();
 
   const refreshLocations = useCallback(async () => {
-    const data = await getLocations();
-    setLocations(data || []);
-  }, []);
+    try {
+      const data = await getLocations();
+      setLocations(data || []);
+    } catch (err) {
+      toast({
+        title: "Couldn't load locations",
+        description: err.message,
+        status: "error",
+        isClosable: true,
+      });
+    }
+  }, [toast]);
 
   useEffect(() => {
     refreshLocations();
