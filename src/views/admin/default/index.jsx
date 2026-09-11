@@ -1,45 +1,19 @@
-/*!
-  _   _  ___  ____  ___ ________  _   _   _   _ ___   
- | | | |/ _ \|  _ \|_ _|__  / _ \| \ | | | | | |_ _| 
- | |_| | | | | |_) || |  / / | | |  \| | | | | || | 
- |  _  | |_| |  _ < | | / /| |_| | |\  | | |_| || |
- |_| |_|\___/|_| \_\___/____\___/|_| \_|  \___/|___|
-                                                                                                                                                                                                                                                                                                                                       
-=========================================================
-* Horizon UI - v1.1.0
-=========================================================
-
-* Product Page: https://www.horizon-ui.com/
-* Copyright 2023 Horizon UI (https://www.horizon-ui.com/)
-
-* Designed and Coded by Simmmple
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-
 // Chakra imports
 import {
-  Avatar,
   Box,
   Button,
-  Flex,
-  FormLabel,
+  HStack,
   Icon,
-  Select,
   SimpleGrid,
+  Text,
   useColorModeValue,
   useToast,
 } from "@chakra-ui/react";
-// Assets
-import Usa from "assets/img/dashboards/usa.png";
 // Custom components
-import MiniCalendar from "components/calendar/MiniCalendar";
 import MiniStatistics from "components/card/MiniStatistics";
 import IconBox from "components/icons/IconBox";
 import React, { useCallback, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   createLocation,
   deleteLocation,
@@ -47,34 +21,16 @@ import {
   updateLocation,
 } from "services/locationsApi";
 import LocationList from "views/admin/default/components/LocationList";
-import {
-  MdAdd,
-  MdAddTask,
-  MdAttachMoney,
-  MdBarChart,
-  MdComputer,
-  MdFileCopy,
-  MdPinDrop,
-} from "react-icons/md";
-import CheckTable from "views/admin/default/components/CheckTable";
-import ComplexTable from "views/admin/default/components/ComplexTable";
-import DailyTraffic from "views/admin/default/components/DailyTraffic";
-import PieCard from "views/admin/default/components/PieCard";
-import Tasks from "views/admin/default/components/Tasks";
-import TotalSpent from "views/admin/default/components/TotalSpent";
-import WeeklyRevenue from "views/admin/default/components/WeeklyRevenue";
 import Locations from "views/admin/default/components/Locations";
-import {
-  columnsDataCheck,
-  columnsDataComplex,
-} from "views/admin/default/variables/columnsData";
-import tableDataCheck from "views/admin/default/variables/tableDataCheck.json";
-import tableDataComplex from "views/admin/default/variables/tableDataComplex.json";
+import { MdCable, MdComputer, MdPinDrop } from "react-icons/md";
 
 export default function UserReports() {
+  const navigate = useNavigate();
   // Chakra Color Mode
   const brandColor = useColorModeValue("brand.500", "white");
   const boxBg = useColorModeValue("secondaryGray.300", "whiteAlpha.100");
+  const dashedBorder = useColorModeValue("secondaryGray.400", "whiteAlpha.300");
+  const dashedHoverBg = useColorModeValue("secondaryGray.100", "whiteAlpha.100");
   const devices = 42;
   const [locations, setLocations] = useState([]);
   const toast = useToast();
@@ -149,13 +105,27 @@ export default function UserReports() {
         <Button
           variant='outline'
           w='100%'
-          h='100%'>
-            <Icon w='32px' h='32px' as={MdAdd} color={brandColor} />
-          Add Device
+          h='100%'
+          minH='80px'
+          width='fit-content'
+          borderRadius='20px'
+          border='1px solid'
+          borderColor={dashedBorder}
+          _hover={{
+            bg: dashedHoverBg,
+            borderColor: brandColor,
+          }}
+          onClick={() => navigate('/admin/rack-room')}>
+          <HStack spacing='8px'>
+            <Icon w='24px' h='24px' as={MdCable} color={brandColor} />
+            <Text fontWeight='700' fontSize='sm'>
+              Open Rack & Cable Canvas
+            </Text>
+          </HStack>
         </Button>
       </SimpleGrid>
 
-      <SimpleGrid columns={{ base: 1, md: 2, xl: 2 }} gap='20px' mb='20px'>
+      <SimpleGrid columns={{ base: 1, md: 1, xl: 2 }} gap='20px' mb='20px'>
         <Locations locations={locations} onCreate={handleCreateLocation} />
         <LocationList
           locations={locations}

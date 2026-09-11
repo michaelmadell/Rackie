@@ -15,20 +15,83 @@ export const buttonStyles = {
         },
       },
       variants: {
-        outline: () => ({
+        outline: (props) => ({
           borderRadius: "16px",
-        }),
-        brand: (props) => ({
-          bg: mode("brand.500", "brand.400")(props),
-          color: "white",
-          _focus: {
-            bg: mode("brand.500", "brand.400")(props),
+          border: "1px solid",
+          borderColor: mode("secondaryGray.400", "whiteAlpha.300")(props),
+          color: mode("secondaryGray.900", "white")(props),
+          bg: "transparent",
+          _hover: {
+            bg: mode("secondaryGray.100", "whiteAlpha.100")(props),
+            borderColor: mode("secondaryGray.500", "whiteAlpha.400")(props),
           },
           _active: {
-            bg: mode("brand.500", "brand.400")(props),
+            bg: mode("secondaryGray.200", "whiteAlpha.200")(props),
+          },
+          _focus: {
+            boxShadow: "none",
+          },
+        }),
+        solid: (props) => {
+          const { colorScheme: c } = props;
+          if (c === "brand") {
+            return {
+              bg: mode("brand.500", "brand.500")(props),
+              color: "white",
+              _hover: {
+                bg: mode("brand.600", "brand.600")(props),
+              },
+              _active: {
+                bg: mode("brand.700", "brand.700")(props),
+              },
+              _disabled: {
+                bg: mode("brand.300", "brand.800")(props),
+                opacity: 0.6,
+              },
+            };
+          }
+          if (c === "coral" || c === "brandCoral") {
+            return {
+              bg: mode("coral.500", "coral.500")(props),
+              color: "white",
+              _hover: {
+                bg: mode("coral.600", "coral.600")(props),
+              },
+              _active: {
+                bg: mode("coral.700", "coral.700")(props),
+              },
+              _disabled: {
+                bg: mode("coral.300", "coral.800")(props),
+                opacity: 0.6,
+              },
+            };
+          }
+          return {};
+        },
+        brand: (props) => ({
+          bg: mode("brand.500", "brand.500")(props),
+          color: "white",
+          _focus: {
+            bg: mode("brand.500", "brand.500")(props),
+          },
+          _active: {
+            bg: mode("brand.600", "brand.600")(props),
           },
           _hover: {
-            bg: mode("brand.600", "brand.400")(props),
+            bg: mode("brand.600", "brand.600")(props),
+          },
+        }),
+        coral: (props) => ({
+          bg: mode("coral.500", "coral.500")(props),
+          color: "white",
+          _focus: {
+            bg: mode("coral.500", "coral.500")(props),
+          },
+          _active: {
+            bg: mode("coral.600", "coral.600")(props),
+          },
+          _hover: {
+            bg: mode("coral.600", "coral.600")(props),
           },
         }),
         darkBrand: (props) => ({
@@ -45,16 +108,29 @@ export const buttonStyles = {
           },
         }),
         lightBrand: (props) => ({
-          bg: mode("#F2EFFF", "whiteAlpha.100")(props),
-          color: mode("brand.500", "white")(props),
+          bg: mode("brand.50", "whiteAlpha.100")(props),
+          color: mode("brand.600", "brand.300")(props),
           _focus: {
-            bg: mode("#F2EFFF", "whiteAlpha.100")(props),
+            bg: mode("brand.100", "whiteAlpha.100")(props),
           },
           _active: {
             bg: mode("secondaryGray.300", "whiteAlpha.100")(props),
           },
           _hover: {
-            bg: mode("secondaryGray.400", "whiteAlpha.200")(props),
+            bg: mode("brand.100", "whiteAlpha.200")(props),
+          },
+        }),
+        lightCoral: (props) => ({
+          bg: mode("coral.50", "whiteAlpha.100")(props),
+          color: mode("coral.600", "coral.300")(props),
+          _focus: {
+            bg: mode("coral.100", "whiteAlpha.100")(props),
+          },
+          _active: {
+            bg: mode("coral.100", "whiteAlpha.100")(props),
+          },
+          _hover: {
+            bg: mode("coral.100", "whiteAlpha.200")(props),
           },
         }),
         light: (props) => ({
@@ -98,6 +174,20 @@ export const buttonStyles = {
             bg: mode("secondaryGray.100", "brand.400")(props),
           },
         }),
+        "no-hover": {
+          bg: "transparent",
+          _hover: {
+            boxShadow: "none",
+            bg: "transparent",
+          },
+          _focus: {
+            boxShadow: "none",
+          },
+          _active: {
+            boxShadow: "none",
+            bg: "transparent",
+          },
+        },
       },
     },
   },

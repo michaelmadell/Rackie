@@ -10,9 +10,11 @@ const Card = {
     minWidth: '0px',
     wordWrap: 'break-word',
     bg: mode('#ffffff', 'navy.800')(props),
+    border: mode('none', '1px solid')(props),
+    borderColor: mode('transparent', 'whiteAlpha.100')(props),
     boxShadow: mode(
       '14px 17px 40px 4px rgba(112, 144, 176, 0.08)',
-      'unset',
+      '0px 4px 20px rgba(0, 0, 0, 0.35)',
     )(props),
     backgroundClip: 'border-box',
   }),

@@ -17,15 +17,20 @@ export default function AdminNavbar(props) {
 
 	const { secondary, message, brandText } = props;
 
-	// Here are all the props that may change depending on navbar's type or state.(secondary, variant, scrolled)
-	let mainText = useColorModeValue('navy.700', 'white');
-	let secondaryText = useColorModeValue('gray.700', 'white');
+	// Props that change depending on navbar state and theme
+	const mainText = useColorModeValue('navy.700', 'white');
+	const secondaryText = useColorModeValue('secondaryGray.600', 'whiteAlpha.600');
+	const shadowScrolled = useColorModeValue('0px 7px 23px 0px rgba(112, 144, 176, 0.1)', '0px 7px 23px 0px rgba(0, 0, 0, 0.45)');
+	const bgScrolled = useColorModeValue('rgba(255, 255, 255, 0.88)', 'rgba(11, 33, 48, 0.88)');
+	const bgNotScrolled = useColorModeValue('rgba(244, 247, 254, 0.2)', 'rgba(11, 33, 48, 0.35)');
+	const borderScrolled = useColorModeValue('rgba(226, 232, 240, 0.8)', 'rgba(255, 255, 255, 0.08)');
+
 	let navbarPosition = 'fixed';
 	let navbarFilter = 'none';
 	let navbarBackdrop = 'blur(20px)';
-	let navbarShadow = 'none';
-	let navbarBg = useColorModeValue('rgba(244, 247, 254, 0.2)', 'rgba(11,20,55,0.5)');
-	let navbarBorder = 'transparent';
+	let navbarShadow = scrolled ? shadowScrolled : 'none';
+	let navbarBg = scrolled ? bgScrolled : bgNotScrolled;
+	let navbarBorder = scrolled ? borderScrolled : 'transparent';
 	let secondaryMargin = '0px';
 	let paddingX = '15px';
 	let gap = '0px';
@@ -52,7 +57,7 @@ export default function AdminNavbar(props) {
 			borderStyle='solid'
 			transitionDelay='0s, 0s, 0s, 0s'
 			transitionDuration=' 0.25s, 0.25s, 0.25s, 0s'
-			transition-property='box-shadow, background-color, filter, border'
+			transitionProperty='box-shadow, background-color, filter, border'
 			transitionTimingFunction='linear, linear, linear, linear'
 			alignItems={{ xl: 'center' }}
 			display={secondary ? 'block' : 'flex'}
@@ -109,7 +114,7 @@ export default function AdminNavbar(props) {
 						borderRadius='inherit'
 						fontWeight='bold'
 						fontSize='34px'
-						_hover={{ color: { mainText } }}
+						_hover={{ color: mainText }}
 						_active={{
 							bg: 'inherit',
 							transform: 'none',

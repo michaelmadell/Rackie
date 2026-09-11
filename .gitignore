@@ -1,4 +1,4 @@
-node_modules
+﻿node_modules
 /package-lock.json
 yarn.lock
 build
@@ -28,3 +28,9 @@ yarn-error.log*
 # server-local env (see server/.env.example)
 server/.env
 server/.env.test
+
+# Claude worktrees & local scratch
+.claude/
+scratch/
+output*.txt
+claude.bat

@@ -10,7 +10,7 @@ import logoWhite from "assets/img/layout/logoWhite.png";
 import React from "react";
 
 export default function SidebarDocs() {
-  const bgColor = "linear-gradient(135deg, #868CFF 0%, #4318FF 100%)";
+  const bgColor = "linear-gradient(135deg, #3d9e99 0%, #0b2130 100%)";
   const borderColor = useColorModeValue("white", "navy.800");
 
   return (
@@ -24,7 +24,7 @@ export default function SidebarDocs() {
       <Flex
         border='5px solid'
         borderColor={borderColor}
-        bg='linear-gradient(135deg, #868CFF 0%, #4318FF 100%)'
+        bg='linear-gradient(135deg, #a3d4d1 0%, #3d9e99 100%)'
         borderRadius='50%'
         w='94px'
         h='94px'
@@ -53,31 +53,30 @@ export default function SidebarDocs() {
           px='10px'
           mt="10px"
           mb='6px'>
-          Upgrade to PRO
+          Rackie Docs
         </Text>
         <Text
           fontSize='14px'
-          color={"white"}
+          color={"whiteAlpha.800"}
           fontWeight='500'
           px='10px'
           mb='6px'
           textAlign='center'>
-          Improve your development process and start doing more with Horizon UI
-          PRO!
+          Interactive rack layout, modular blade enclosures & cable management.
         </Text>
       </Flex>
-      <Link href='https://horizon-ui.com/pro?ref=horizon-chakra-free'>
+      <Link href='/#/admin/rack-room'>
         <Button
-          bg='whiteAlpha.300'
-          _hover={{ bg: "whiteAlpha.200" }}
-          _active={{ bg: "whiteAlpha.100" }}
+          bg='coral.500'
+          _hover={{ bg: "coral.600" }}
+          _active={{ bg: "coral.700" }}
           mb={{ sm: "16px", xl: "24px" }}
           color={"white"}
-          fontWeight='regular'
+          fontWeight='medium'
           fontSize='sm'
           minW='185px'
           mx='auto'>
-          Upgrade to PRO
+          Open Rack Canvas
         </Button>
       </Link>
     </Flex>

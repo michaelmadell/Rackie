@@ -1,53 +1,61 @@
 import { mode } from "@chakra-ui/theme-tools";
+
 export const textareaStyles = {
   components: {
     Textarea: {
+      defaultProps: {
+        variant: "main",
+      },
       baseStyle: {
-        field: {
-          fontWeight: 400,
-          borderRadius: "8px",
-        },
+        fontWeight: 400,
+        borderRadius: "16px",
       },
 
       variants: {
         main: (props) => ({
-          field: {
-            bg: mode("transparent", "navy.800")(props),
-            border: "1px solid !important",
-            color: mode("secondaryGray.900", "white")(props),
-            borderColor: mode("secondaryGray.100", "whiteAlpha.100")(props),
-            borderRadius: "16px",
-            fontSize: "sm",
-            p: "20px",
-            _placeholder: { color: "secondaryGray.400" },
+          bg: mode("transparent", "navy.800")(props),
+          border: "1px solid",
+          color: mode("secondaryGray.900", "white")(props),
+          borderColor: mode("secondaryGray.400", "whiteAlpha.200")(props),
+          borderRadius: "16px",
+          fontSize: "sm",
+          p: "14px 20px",
+          _placeholder: {
+            color: mode("secondaryGray.500", "secondaryGray.600")(props),
+          },
+          _focus: {
+            borderColor: mode("brand.500", "brand.300")(props),
+            boxShadow: mode(
+              "0 0 0 1px #3d9e99",
+              "0 0 0 1px #a3d4d1"
+            )(props),
+          },
+        }),
+        outline: (props) => ({
+          bg: mode("transparent", "navy.800")(props),
+          border: "1px solid",
+          color: mode("secondaryGray.900", "white")(props),
+          borderColor: mode("secondaryGray.400", "whiteAlpha.200")(props),
+          borderRadius: "16px",
+          fontSize: "sm",
+          p: "14px 20px",
+          _placeholder: {
+            color: mode("secondaryGray.500", "secondaryGray.600")(props),
+          },
+          _focus: {
+            borderColor: mode("brand.500", "brand.300")(props),
+            boxShadow: mode(
+              "0 0 0 1px #3d9e99",
+              "0 0 0 1px #a3d4d1"
+            )(props),
           },
         }),
         auth: (props) => ({
-          field: {
-            bg: "white",
-            border: "1px solid",
-            borderColor: "secondaryGray.100",
-            borderRadius: "16px",
-            _placeholder: { color: "secondaryGray.600" },
-          },
-        }),
-        authSecondary: (props) => ({
-          field: {
-            bg: "white",
-            border: "1px solid",
-
-            borderColor: "secondaryGray.100",
-            borderRadius: "16px",
-            _placeholder: { color: "secondaryGray.600" },
-          },
-        }),
-        search: (props) => ({
-          field: {
-            border: "none",
-            py: "11px",
-            borderRadius: "inherit",
-            _placeholder: { color: "secondaryGray.600" },
-          },
+          bg: "white",
+          border: "1px solid",
+          borderColor: "secondaryGray.100",
+          borderRadius: "16px",
+          _placeholder: { color: "secondaryGray.600" },
         }),
       },
     },

@@ -1,18 +1,15 @@
 import React from 'react';
-
 import { Icon } from '@chakra-ui/react';
 import {
-  MdBarChart,
-  MdPerson,
+  MdCable,
+  MdDevices,
   MdHome,
-  MdOutlineShoppingCart,
 } from 'react-icons/md';
 
-// Admin Imports
+// Admin Views
 import MainDashboard from 'views/admin/default';
-import NFTMarketplace from 'views/admin/marketplace';
-import Profile from 'views/admin/profile';
-import DataTables from 'views/admin/dataTables';
+import RoomVisualizerView from 'views/admin/room';
+import DeviceLibraryView from 'views/admin/deviceLibrary';
 
 const routes = [
   {
@@ -23,33 +20,18 @@ const routes = [
     component: <MainDashboard />,
   },
   {
-    name: 'NFT Marketplace',
+    name: 'Rack & Cable Canvas',
     layout: '/admin',
-    path: '/nft-marketplace',
-    icon: (
-      <Icon
-        as={MdOutlineShoppingCart}
-        width="20px"
-        height="20px"
-        color="inherit"
-      />
-    ),
-    component: <NFTMarketplace />,
-    secondary: true,
+    path: '/rack-room',
+    icon: <Icon as={MdCable} width="20px" height="20px" color="inherit" />,
+    component: <RoomVisualizerView />,
   },
   {
-    name: 'Data Tables',
+    name: 'Device Library',
     layout: '/admin',
-    icon: <Icon as={MdBarChart} width="20px" height="20px" color="inherit" />,
-    path: '/data-tables',
-    component: <DataTables />,
-  },
-  {
-    name: 'Profile',
-    layout: '/admin',
-    path: '/profile',
-    icon: <Icon as={MdPerson} width="20px" height="20px" color="inherit" />,
-    component: <Profile />,
+    path: '/device-library',
+    icon: <Icon as={MdDevices} width="20px" height="20px" color="inherit" />,
+    component: <DeviceLibraryView />,
   },
 ];
 

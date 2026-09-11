@@ -4,5 +4,12 @@ body {
 }
 
 option {
-  color: black;
+  background-color: #ffffff;
+  color: #1b2559;
+}
+
+.chakra-ui-dark option,
+[data-theme='dark'] option {
+  background-color: #102334;
+  color: #ffffff;
 }

@@ -34,7 +34,7 @@ export default function Banner() {
       </Text>
       <Text
         fontSize='md'
-        color='#E3DAFF'
+        color='#d4ecea'
         maxW={{
           base: "100%",
           md: "64%",

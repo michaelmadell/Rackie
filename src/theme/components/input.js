@@ -2,10 +2,13 @@ import { mode } from "@chakra-ui/theme-tools";
 export const inputStyles = {
   components: {
     Input: {
+      defaultProps: {
+        variant: "main",
+      },
       baseStyle: {
         field: {
           fontWeight: 400,
-          borderRadius: "8px",
+          borderRadius: "16px",
         },
       },
 
@@ -15,11 +18,45 @@ export const inputStyles = {
             bg: mode("transparent", "navy.800")(props),
             border: "1px solid",
             color: mode("secondaryGray.900", "white")(props),
-            borderColor: mode("secondaryGray.100", "whiteAlpha.100")(props),
+            _dark: {
+              color: "white",
+            },
+            borderColor: mode("secondaryGray.400", "whiteAlpha.200")(props),
             borderRadius: "16px",
             fontSize: "sm",
-            p: "20px",
-            _placeholder: { color: "secondaryGray.400" },
+            py: "12px",
+            px: "16px",
+            _placeholder: { color: mode("secondaryGray.500", "whiteAlpha.500")(props) },
+            _focus: {
+              borderColor: mode("brand.500", "brand.300")(props),
+              boxShadow: mode(
+                "0 0 0 1px #3d9e99",
+                "0 0 0 1px #a3d4d1"
+              )(props),
+            },
+          },
+        }),
+        outline: (props) => ({
+          field: {
+            bg: mode("transparent", "navy.800")(props),
+            border: "1px solid",
+            color: mode("secondaryGray.900", "white")(props),
+            _dark: {
+              color: "white",
+            },
+            borderColor: mode("secondaryGray.400", "whiteAlpha.200")(props),
+            borderRadius: "16px",
+            fontSize: "sm",
+            py: "12px",
+            px: "16px",
+            _placeholder: { color: mode("secondaryGray.500", "whiteAlpha.500")(props) },
+            _focus: {
+              borderColor: mode("brand.500", "brand.300")(props),
+              boxShadow: mode(
+                "0 0 0 1px #3d9e99",
+                "0 0 0 1px #a3d4d1"
+              )(props),
+            },
           },
         }),
         auth: (props) => ({
@@ -115,13 +152,13 @@ export const inputStyles = {
           field: {
             bg: mode("transparent", "navy.800")(props),
             border: "1px solid",
-            color: "secondaryGray.600",
-            borderColor: mode("secondaryGray.100", "whiteAlpha.100")(props),
-            borderRadius: "16px",
-            _placeholder: { color: "secondaryGray.600" },
+            color: mode("secondaryGray.900", "white")(props),
+            borderColor: mode("secondaryGray.300", "whiteAlpha.200")(props),
+            borderRadius: "12px",
+            _placeholder: { color: mode("secondaryGray.500", "whiteAlpha.500")(props) },
           },
           icon: {
-            color: "secondaryGray.600",
+            color: mode("secondaryGray.600", "whiteAlpha.700")(props),
           },
         }),
         mini: (props) => ({

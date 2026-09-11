@@ -73,7 +73,7 @@ export default function Conversion(props) {
         <VSeparator mx={{ base: "60px", xl: "60px", "2xl": "60px" }} />
         <Flex direction='column' py='5px' me='10px'>
           <Flex align='center'>
-            <Box h='8px' w='8px' bg='#6AD2FF' borderRadius='50%' me='4px' />
+            <Box h='8px' w='8px' bg='coral.500' borderRadius='50%' me='4px' />
             <Text
               fontSize='xs'
               color='secondaryGray.600'
