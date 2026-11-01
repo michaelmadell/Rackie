@@ -4,12 +4,12 @@ import { BUILT_IN_PRESETS } from '#shared/presets';
 // Written to the database file the first time the server starts.
 export const seed: Site = {
   rooms: [
-    { id: 'room-a', name: 'Server Room A', x: 0, y: 0, width: 620, height: 460 },
-    { id: 'room-b', name: 'Comms Room B', x: 760, y: 0, width: 400, height: 460 },
+    { id: 'room-a', name: 'Server Room A', x: 0, y: 0, width: 810, height: 460 },
+    { id: 'room-b', name: 'Comms Room B', x: 900, y: 0, width: 400, height: 460 },
   ],
   racks: [
     { id: 'rack-a1', name: 'A1', roomId: 'room-a', uHeight: 12, x: 30, y: 60 },
-    { id: 'rack-a2', name: 'A2', roomId: 'room-a', uHeight: 12, x: 330, y: 60 },
+    { id: 'rack-a2', name: 'A2', roomId: 'room-a', uHeight: 12, x: 420, y: 60 },
     { id: 'rack-b1', name: 'B1', roomId: 'room-b', uHeight: 12, x: 60, y: 60 },
   ],
     devices: [
